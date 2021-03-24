@@ -30,7 +30,7 @@ Hoe.spec "edr" do |s|
   dependency('dry-system','~> 0.18')
   dependency('rom', '~> 5.2')
   dependency('rom-sql', '~> 3.3')
-  dependency('ruby-oci8','~> 2.2')
+  dependency('ruby-oci8','>= 2.2')
   dependency('dry-auto_inject','~> 0.7')
   dependency('dry-view', '~> 0.7')
   dependency('dry-cli', '~> 0.6')
