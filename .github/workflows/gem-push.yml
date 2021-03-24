@@ -24,8 +24,9 @@ jobs:
         touch $HOME/.gem/credentials
         chmod 0600 $HOME/.gem/credentials
         printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        rake package
-        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} pkg\*.gem
+        rake check_extra_deps
+        rake pkg
+        gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} pkg/*.gem
       env:
         GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
         OWNER: ${{ github.repository_owner }}
