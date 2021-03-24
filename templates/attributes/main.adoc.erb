@@ -1,0 +1,49 @@
+:author:    Dominic Sisneros
+:email:	    Dominic.E.Sisneros@faa.gov
+:cell:	    801-558-1966
+:factype:   <%= project.factyp_cd %>
+:locid:     <%= project.locid_cd %>
+:lid_fac:   {locid} {factype}
+:city:      <%= project.city.capitalize rescue 'TODO' %>
+:state:     <%= project.state.upcase rescue 'TODO' %>
+:cip:       <%= project.cip %>
+:jcn:       <%= project.jcn %>
+:jon:       <%= project.latest_dpn %>
+// LOCATION INFO
+:location:  <%= facility.loc_name.capitalize %>, <%= facility.st_abbrv %> 
+:cost_center: <%= project.cost_center_ccc %>
+:fac_ident: <%= facility.fic_cd %>
+:latitude:  <%= facility.latitude %>
+:latitude:  <%= facility.longitude %>
+:msl:       <%= facility.elevation %>
+:ssc_gsa_address   <%= facility.gsaaddr_cd %>
+// FUNDING
+:accounting_code_travel: {jon}/4400A.WB4060/21000/COST-CENTER/DD-MM-YYYY/12082W0190/810000
+:accounting_code_material: {jon}/4400A.WB4060/OBJ-CLASS/NM8GWSA000/DD-MM-YYYY/12982A0170/2A10A0
+:nl:	    \n
+:project_keywords: {jcn},{lid_fac}
+:project_url: https://cwp.faa.gov/Portal/UserInterface/Projects/Project.aspx?SearchText={jcn}
+:na:	Coordination is not required
+// ATTRIBUTES FOR IFDEF
+:include_plants:
+:schedule_detail!:
+:include_badging!:
+:include_rce:
+:include_dc!:
+ifdef::include_rce[]
+:temporary_cables: a temporary cat5 cable will be installed to connect the the +
+RCE telco to the telco Service Delivery point
+endif::[]
+ifndef::include_rce[]
+:temporary_cables: temporary audio / ptt cables will connect the radios to the 66 blocks
+endif::[]
+:plants_required!:
+:include_tx:
+:include_filters!:
+// included adoc files
+include::_site_info.adoc[]
+include::_contacts.adoc[]
+include::_drawings.adoc[]
+include::_schedule.data.adoc[]
+include::_standards.adoc[]
+include::_attachments.adoc[]

@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+require 'edr/application'
+require 'dry/cli'
+require 'json'
+
+
+module Faa
+  module CLI
+
+    module Commands
+      extend Dry::CLI::Registry
+
+      class Org < Dry::CLI::Command
+        desc "Find Org Information"
+
+        option :search, default: "lid_fac", values: %w[lid_fac  cost_code]
+        argument :search_string, type: :string, required: true, desc: "The search string"
+
+        def call(search_string: , search:, **)
+          org_repo = Edr::Repos::OrganizationRepo.new
+          case search
+          when "lid_fac"
+            fac_repo = Edr::Repos::FacilityRepo.new
+            lid, factype = search_string.split(/[_ ]/)
+            facility = fac_repo.get(lid, factype)
+            org = org_repo.organizations.where(cc_cd: facility.cc_cd, rgn_cd: facility.rgn_cd).first
+            puts org.to_h.to_json
+          end
+
+        end
+      end
+
+      register "org", Org
+    end
+  end
+end
+
+Dry::CLI.new(Faa::CLI::Commands).call

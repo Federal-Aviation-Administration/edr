@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require_relative '../system/boot'
+
+require 'irb'
+require 'pry'
+
+fac_repo = Edr::Repos::FacilityRepo.new
+btf_rtr = fac_repo.get('BTF','RTR')
+
+org_repo = Edr::Repos::OrganizationRepo.new
+
+btf_org = org_repo.organizations.where(cc_cd: btf_rtr.cc_cd, rgn_cd: btf_rtr.rgn_cd).first
+
+employee_repo = Edr::Repos::EmployeeRepo.new
+employees = employee_repo.employees.where(cc_cd: btf_org.cc_cd).to_a
+
+paula = employee_repo.by_name(last: 'Fries')
+dominic = employee_repo.by_name(last: 'Sisneros')
+
+project_repo = Edr::Repos::ProjectRepo.new
+
+project2_repo = Edr::Repos::DetailedProjectRepo.new
+
+obj_classes = Edr::Repos::ObjectClassRepo.new
+
+generator = Edr::Container['operations.generate']
+
+result = generator.call(jcn: '1103851')
+
+binding.pry
+whereami 27

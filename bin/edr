@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'edr/cli'
+Edr::Container.finalize!
+Edr::CLI::Application.start
