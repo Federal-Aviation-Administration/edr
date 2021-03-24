@@ -1,4 +1,4 @@
-.env.blank
+.env.blank.yaml
 Gemfile
 History.txt
 Manifest.txt
@@ -42,7 +42,6 @@ lib/edr/repos/object_class_repo.rb
 lib/edr/repos/organization_repo.rb
 lib/edr/repos/project_repo.rb
 lib/edr/types.rb
-lib/edr/version.rb
 lib/edr/view.rb
 lib/edr/views/attributes.rb
 lib/edr/views/contacts.rb

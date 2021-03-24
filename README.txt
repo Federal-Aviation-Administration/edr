@@ -1,8 +1,8 @@
 = faa_edr
 
-home  :: http://github.com/dsisnero/edr
-code  :: http://github.com/dsisnero/edr
-bugs  :: http://github.com/dsisnero/edr/issues
+home  :: http://github.com/Federal-Aviation-Administation/edr
+code  :: http://github.com/Federal-Aviation-Administration/edr
+bugs  :: http://github.com/Federal-Aviation-Administration/edr/issues
 ... etc ...
 
 == DESCRIPTION:

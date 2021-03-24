@@ -24,13 +24,14 @@ Hoe.plugin :minitest
 # Hoe.plugin :yard
 
 Hoe.spec "edr" do |s|
+  require_ruby_version [">= 2.7", "<= 4.0"]
   developer('Dominic Sisneros', 'dsisnero@gmail.com')
 
   dependency('dry-system','~> 0.18')
   dependency('rom', '~> 5.2')
   dependency('rom-sql', '~> 3.3')
-  dependency('ruby-oci8','~> 2.8')
-  dependency('dry-auto_inject','>= 0.0')
+  dependency('ruby-oci8','~> 2.2')
+  dependency('dry-auto_inject','~> 0.7')
   dependency('dry-view', '~> 0.7')
   dependency('dry-cli', '~> 0.6')
   dependency('dotenv','~> 2.7')
